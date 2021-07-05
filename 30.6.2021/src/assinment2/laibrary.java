@@ -4,32 +4,74 @@ import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.Scanner;
 
-
-
-public class laibrary {
-	public static void main (String a[]) {
+public class Laibrary
+{
 	
-		LinkedHashSet<String> link=new LinkedHashSet<String>();
-		Scanner sc=new Scanner(System.in);
-		
-		link.add(sc.next());
-		link.add(sc.next());
-		link.add(sc.next());
-		
-		Iterator itr=link.iterator();
-		while(itr.hasNext()) {
-          System.out.print(itr.next()+",");
-		}
-          System.out.println();
-		
-			
-	   link.remove(sc.next());
-	   Iterator itr1=link.iterator();
-			  while(itr1.hasNext()) {
-			 System.out.print(itr1.next()+","); 
-			 }
-			 
-		
-	}
 
+	
+
+	public static void main(String[] args)
+	{
+		 LinkedHashSet<Store> linkedHashSet=new LinkedHashSet<Store>();
+	    boolean status=true;
+	  
+	    Scanner sc=new Scanner(System.in);
+	    while(status)
+		{
+		System.out.println("Enter the book name");
+		String s2="end";
+		String name=sc.next();
+	     if(name.equals(s2))
+	     {
+	    	 status=false;
+	    	 break;
+	     }
+	     linkedHashSet.add(new Store(name));
+		
+		}
+	    System.out.println("you ended this list");
+	   
+	   System.out.println(linkedHashSet.toString());
+	 
+	   
+	    System.out.println("Enter the data what operation want to do");
+	    System.out.println("1 for add,2 for remove");
+	   
+	    int value=sc.nextInt();
+	 
+		switch(value)
+	    {
+	    case 1:
+	    	while(status)
+	    	{
+	    	System.out.println("Enter the book name");
+	    	String s2="end";
+	    	String addName=sc.next();
+	         if(addName.equals(s2))
+	         {
+	        	 status=false;
+	        	 break;
+	         }
+	         linkedHashSet.add(new Store(addName));
+	    	}
+	    	
+	    	  
+	    case 2:
+	    	while(status)
+	    	{
+	    	System.out.println("Enter the bookname to delete ");
+	    	String bookName=sc.next();
+	    	String s3="end";
+	    	 if(bookName.equals(s3))
+	         {
+	        	 status=false;
+	        	 break;
+	         }
+	    	 linkedHashSet.remove(bookName);
+	    	}
+	    	
+	    	  
+	    }
+	    
+	}
 }
