@@ -1,0 +1,59 @@
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+          "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+        <struts-config>
+<form-beans>
+    <form-bean name="LoginForm" type="com.forms.LoginForm"> </form-bean>
+  
+    <form-bean name="userprofile" type="com.forms.Userprofile"></form-bean>
+		<form-bean name="ticketform" type="com.forms.RaiseTicketForm"></form-bean>
+</form-beans>
+
+<action-mappings>
+    
+<action input="/userdata.jsp" name="LoginForm" path="/login"  scope="session" type="com.action.UserdataAction">
+			<forward name="user" path="/userhome.jsp"  redirect="true"></forward>
+			<forward name="admin" path="/adminhome.jsp"  redirect="true"></forward>
+			<forward name="error" path="/Error.jsp"></forward>
+			
+		</action>
+		<action name="LoginForm" path="/profile" scope="session" type="com.action.ProfileAction">
+			<forward name="success" path="/userprofile.jsp"></forward>
+
+		</action>
+		<action name="LoginForm" path="/adminprofile" scope="session" type="com.action.ProfileAction">
+			<forward name="success" path="/adminprofile.jsp"></forward>
+
+		</action>
+		<action  name="LoginForm" path="/tickethistory" scope="session" validate= "true" type="com.action.RaiseTicketAction">
+			<forward name="success" path="/Details.jsp"></forward>
+
+		</action>
+		<action  input="/RaiseTicket.jsp" name="ticketform" path="/tickets" type="com.action.TicketAction">
+        <forward name="Tickets" path="/success.jsp"></forward>
+        <forward name="error" path="/Error.jsp"></forward>
+    </action>
+    <action  name="LoginForm" path="/status"  type="com.action.OpenTicketAction">
+        <forward name="success" path="/OpenTicket.jsp"></forward>
+         <forward name="error" path="/Error.jsp"></forward>
+    </action>
+    <!-- input="/OpenTicket.jsp" --> 
+       <action  name="LoginForm" path="/statuss" type="com.action.StatusAction">
+        <forward name="status" path="/StatusLink.jsp"></forward>     
+    </action>
+      <action  name="LoginForm" path="/assign" type="com.action.AssignedTicketAction">
+          <forward name="assigned" path="/AdminOpenTickets.jsp"></forward>     
+    </action>
+    <action input="/AdminUpdateStatus.jsp" name="ticketform" parameter="method" scope="session" path="/simpleform" validate="true" type="com.action.DataAction">
+       <forward name="success" path="/AdminUpdateStatus.jsp"></forward>
+       <forward name="error" path="/Error.jsp"></forward>
+       
+    </action>
+    
+	      <action  name="loginform" path="/logout" scope="session" type="com.action.LogoutAction">
+          <forward name="logout" path="/userdata.jsp" redirect="false"></forward>     
+    </action>
+    
+</action-mappings>
+
+</struts-config>   

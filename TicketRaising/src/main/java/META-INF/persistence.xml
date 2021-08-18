@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0" 
+	xmlns="http://java.sun.com/xml/ns/persistence" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence 
+		http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+
+	<persistence-unit name="myjpa" >
+	
+<class>com.entity.Userdata</class>
+<class>com.entity.Userprofile</class>
+<class>com.entity.TicketHistory</class>
+<class>com.entity.RaiseTicket</class>
+
+	  
+		<properties>
+			<property name="javax.persistence.jdbc.driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:sqlserver://den1.mssql8.gear.host;databaseName=sampletestdata99" />
+			<property name="javax.persistence.jdbc.user" value="sampletestdata99" />
+			<property name="javax.persistence.jdbc.password" value="@Naveen99" />
+			
+			<property name="hibernate.dialect" value="org.hibernate.dialect.SqlServerDialect"/>
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.format_sql" value="true" />
+			<property name="hibernate.hbm2ddl.auto" value="update" /> <!-- create | create-drop | validate | update -->
+		</properties>
+
+	</persistence-unit>
+
+</persistence>
