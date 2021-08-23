@@ -15,9 +15,9 @@ public class LogoutAction extends Action{
 			HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
 		request.getSession().invalidate();
-		
+		request.getSession().removeAttribute("username");
 		return mapping.findForward("logout");
 	}
-	
+
 
 }

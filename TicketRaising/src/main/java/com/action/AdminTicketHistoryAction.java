@@ -14,19 +14,18 @@ import com.entity.RaiseTicket;
 import com.forms.LoginForm;
 import com.repos.PortalDAO;
 
-public class AssignedTicketAction extends Action {
+public class AdminTicketHistoryAction extends Action{
 
 	@Override
 	public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
-
-		LoginForm udf=(LoginForm) form;
-		List<RaiseTicket> report=PortalDAO.getAssignedList(udf.getUsername());
-		System.out.println(report);
-		request.getSession().setAttribute("assign",report);
-		return mapping.findForward("assigned");
+		LoginForm r=(LoginForm)form;
+		List<RaiseTicket>  history=PortalDAO.getAdminHistory(r.getUsername());
+		request.getSession().setAttribute("Adminhistory", history);
+		return mapping.findForward("success");
+		/* return super.execute(mapping, form, request, response); */
 	}
 
-
+	
 }

@@ -45,7 +45,7 @@ public class TicketAction extends Action
 		te.setStatus("open");
 		//if(request.getSession().isNew()) {}
 		//if(request.getAttribute("user") != null) {
-			//System.out.println("not null");
+		//System.out.println("not null");
 		//}
 		//LoginForm log= (LoginForm)form;
 		/*

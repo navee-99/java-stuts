@@ -22,15 +22,15 @@ public class UserdataAction extends Action{
 	public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
-	
+
 		LoginForm home= (LoginForm) form;
 		System.out.println(home.toString());
-			Userdata users= new Userdata();
-			users.setUsername(home.getUsername());
-			request.getSession().setAttribute("user", home.getUsername());
-			System.out.println(home.getUsername());
-			users.setPassword(home.getPassword());
-			System.out.println(home.getPassword());
+		Userdata users= new Userdata();
+		users.setUsername(home.getUsername());
+		request.getSession().setAttribute("user", home.getUsername());
+		System.out.println(home.getUsername());
+		users.setPassword(home.getPassword());
+		System.out.println(home.getPassword());
 		List<Userdata> l=	PortalDAO.getUser(users.getUsername(), users.getPassword());
 		System.out.println(home.toString());
 		System.out.println(users.getPassword());
@@ -43,11 +43,13 @@ public class UserdataAction extends Action{
 				request.getSession().setAttribute("username", users.getUsername());
 				return mapping.findForward("admin");
 			}else {
+				System.out.println("error on if");
 				return mapping.findForward("error");
 			}
-	}else {
-		return mapping.findForward("error");
-	}
+		}else {
+			System.out.println("error on page");
+			return mapping.findForward("error");
+		}
 
 	}
 }

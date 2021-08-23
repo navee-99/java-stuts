@@ -33,6 +33,18 @@ System.out.println(username);
 		List<RaiseTicket> ticket=q.getResultList();
 		return ticket;
 	}
+	public static List<RaiseTicket> getHistory(String username){
+		Query q=em.createQuery("SELECT p FROM RaiseTicket p WHERE p.byuser='"+username+"'");
+		List<RaiseTicket> history=q.getResultList();
+		return history;
+		
+	}
+	public static List<RaiseTicket> getAdminHistory(String username){
+		Query q=em.createQuery("SELECT p FROM RaiseTicket p WHERE p.toadmin='"+username+"'");
+		List<RaiseTicket> history=q.getResultList();
+		return history;
+		
+	}
 	public static List<RaiseTicket> getOpenList(String username)
 	{
 		Query s=em.createQuery("select p from RaiseTicket p where p.status='open' and  p.byuser ='"+username+"'");
@@ -47,9 +59,14 @@ System.out.println(username);
 		return adminList;
 		
 	}
+	public static List<RaiseTicket> updateStatus(Integer id){
+		Query s=em.createQuery("select p from RaiseTicket p where  p.ticketid ='"+id+"'");
+		List<RaiseTicket> status=s.getResultList();
+		return status;
+	}
 	public static List<RaiseTicket> getAssignedList(String username)
 	{
-		Query s=em.createQuery("select p from RaiseTicket p where  p.toadmin ='"+username+"'");
+		Query s=em.createQuery("select p from RaiseTicket p where p.status='open' and  p.toadmin ='"+username+"'");
 		List<RaiseTicket> assignList=s.getResultList();
 		return assignList;
 		
@@ -102,7 +119,7 @@ System.out.println(username);
 			return false;
 		}
 	}
-	 public static void update(RaiseTicket p) {
+	 public static boolean update(RaiseTicket p) {
 	   	 EntityTransaction t= em.getTransaction();
 	   	 try {
 	   	 t.begin();
@@ -112,6 +129,7 @@ System.out.println(username);
 	   	 catch(Exception e) {
 	   		 throw e;
 	   	 }
+		return true;
 	    }
 	
 }

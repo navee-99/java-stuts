@@ -12,20 +12,19 @@ import org.apache.struts.action.ActionMapping;
 
 import com.entity.RaiseTicket;
 import com.forms.LoginForm;
+import com.forms.RaiseTicketForm;
 import com.repos.PortalDAO;
 
-public class AssignedTicketAction extends Action {
+public class UserHistoryAction extends Action {
 
 	@Override
 	public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
-
-		LoginForm udf=(LoginForm) form;
-		List<RaiseTicket> report=PortalDAO.getAssignedList(udf.getUsername());
-		System.out.println(report);
-		request.getSession().setAttribute("assign",report);
-		return mapping.findForward("assigned");
+		LoginForm r=(LoginForm)form;
+		List<RaiseTicket>  history=PortalDAO.getHistory(r.getUsername());
+		request.getSession().setAttribute("history", history);
+		return mapping.findForward("success");
 	}
 
 

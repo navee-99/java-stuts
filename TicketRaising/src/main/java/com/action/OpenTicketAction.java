@@ -27,7 +27,7 @@ public class OpenTicketAction extends Action{
 		request.getSession().setAttribute("status", l);
 		return mapping.findForward("success");
 	}
-	
-	
+
+
 
 }

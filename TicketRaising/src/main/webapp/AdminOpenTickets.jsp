@@ -26,12 +26,16 @@
 <title>Insert title here</title>
 </head>
 <body>
-<p align="right">
-		<a href="AdminUpdateStatus.jsp">Update Status</a>
 
-<h>Assigned tickets</h>
+<div class="container">
+<p align="right" style="margin-top:100px">
+<p align="right">
+		<a href="simpleform.do" class="btn btn-success">Update Status</a>
+
+
 <form action="/assign" method="post">
-<h1 style="color:blue" align="center">OpenTicket</h1>
+
+<h1 style="color:blue" align="center" >OpenTicket</h1>
 	<table class="table table-hover">
 
 		<tbody >
@@ -74,6 +78,7 @@
 
 	</table>
 	</form>
+	</div>
 
 </body>
 </html>

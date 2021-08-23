@@ -25,11 +25,11 @@ public class ProfileAction extends Action{
 		System.out.println(lf.toString());
 		Userprofile p=new Userprofile();
 		List<Userprofile> l=PortalDAO.getProfile(lf.getUsername());
-	    request.getSession().setAttribute("profile", l);
-	    return mapping.findForward("success");
-	
-		
+		request.getSession().setAttribute("profile", l);
+		return mapping.findForward("success");
+
+
 	}
-	
+
 
 }

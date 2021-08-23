@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
+<head>
   <title>Bootstrap Example</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,20 +8,22 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
-<%@ include file="userhome.jsp" %>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html>
-<html>
-<head>
-<title>Insert title here</title>
-</head>
-<body>
-<p align="right" style="margin-top:50px">
- <div class="container">
-    <h2 class="text-success">Hii! ${username}</h2>
-    <h2 class="text-success"> YOUR TICKET RAISED SUCESSFULLY</h2>
+<body  style="background-color:pink">
+
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Salesforce</a>
+    </div>
+    </div>
+    </nav>
+    <div class="container">
+    <h2 class="text-danger">LOGIN FAILED ....TRY AGAIN</h2>
      
-</div>
+    <a href="logout.do" class="btn btn-warning" role="button">RETRY </a>
+   
+      
+       </div>
 </body>
 </html>

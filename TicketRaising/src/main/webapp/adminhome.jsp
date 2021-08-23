@@ -13,26 +13,27 @@
 </head>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
     <%@taglib prefix="html" uri="http://struts.apache.org/tags-html"%>
+<body  style="background-color:pink">
 
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-inverse navbar-fixed-top height-100px">
 	<div class="container-fluid">
 	<h1>${name}</h1>
 		<div class="navbar-header">
-			<a class="navbar-brand" href="#">Salesforce</a>
+			<a class="navbar-brand" >Salesforce</a>
 		</div>
 		<ul class="nav navbar-nav">
 			<li class="active"><a href="#">ADMIN</a></li>
 			
 			<li><a href="assign.do">Open Tickets</a></li>
 
-			<li><a href="AdminTicketHistory.jsp">TicketHistory</a></li>
+			<li><a href="Adminhistory.do">TicketHistory</a></li>
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
 	<li><a>${name}</a>
 	
-			<li><a href="profile.do"><span
-					class="glyphicon glyphicon-eye"></span> </a></li>
-			<li><a href="profile.do"><span
+			<li><a ><span
+					class="glyphicon glyphicon-eye"></span> ${username}</a></li>
+			<li><a href="adminprofile.do"><span
 					class="glyphicon glyphicon-user"></span> Admin Profile</a></li>
 			<li><a href="logout.do"><span
 					class="glyphicon glyphicon-log-out"></span> Logout</a></li>
@@ -45,3 +46,5 @@
   
  
 </div>
+</body>
+</html>

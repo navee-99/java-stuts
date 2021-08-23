@@ -43,7 +43,7 @@
 <body>
 
 	<form action="/status" method="post"> 
-		
+		<p align="right" style="margin-top:100px">
 	
 	<h1 style="color:blue" align="center">Open Ticket Status</h1>  
 	<table class="table table-hover">
@@ -51,9 +51,9 @@
 		<tbody class="center">
 
 			<c:forEach items="${status}" var="x">
-			<%-- <c:out value="${x}"></c:out>    --%>
+			
 				<tr>
-					<td style="color:blue">Ticket ID:</td>
+					<td style="color:green">Ticket ID:</td>
 					<td>${x.ticketid}
 				</tr>
 				<tr>
