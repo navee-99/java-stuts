@@ -24,8 +24,8 @@
 <body>
 <div class="container">
 	<p align="right" style="margin-top:100px">
-	<header class="btn btn-warning"> BIO-DATA</header>
-		
+	<!-- <header class="btn btn-warning"> BIO-DATA</header>
+		 -->
 	<table class="table table-hover">
 
 

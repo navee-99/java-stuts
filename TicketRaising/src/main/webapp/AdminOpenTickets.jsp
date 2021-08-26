@@ -36,7 +36,37 @@
 <form action="/assign" method="post">
 
 <h1 style="color:blue" align="center" >OpenTicket</h1>
-	<table class="table table-hover">
+<table class="table">
+    <thead>
+      <tr>
+        <th>Ticket ID</th>
+        <th>Subject</th>
+        <th>Description</th>
+         <th>By</th>
+        <th>To</th>
+        <th>Status</th>
+        <th>DateRaised</th>
+      </tr>
+    </thead>
+     <tbody>
+     <c:forEach items="${assign}" var="x">
+      <tr>
+        <td> ${x.ticketid}</td>
+        <td> ${x.subject}</td>
+         <td> ${x.description}</td>
+          <td> ${x.byuser}</td>
+         <td> ${x.toadmin}</td>
+          <td> ${x.status}</td>
+          
+           <td> ${x.dateraised}</td>
+          
+      </tr>
+     
+     
+      </c:forEach>
+      </tbody>
+    </table>
+	<%-- <table class="table table-hover">
 
 		<tbody >
 		
@@ -76,7 +106,7 @@
 
 		</tbody>
 
-	</table>
+	</table> --%>
 	</form>
 	</div>
 

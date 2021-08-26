@@ -38,9 +38,13 @@ public class RaiseTicket extends ActionForm
 	private String status;
 	@Column
 	private java.sql.Date dateraised;
+	/*
+	 * @Column private String comands;
+	 */
 	
 	public RaiseTicket() {}
 
+	
 	public RaiseTicket(int ticketid, String subject, String description, String byuser, String toadmin, String status,
 			Date dateraised) {
 		super();
@@ -51,7 +55,9 @@ public class RaiseTicket extends ActionForm
 		this.toadmin = toadmin;
 		this.status = status;
 		this.dateraised = dateraised;
+		//this.comands = comands;
 	}
+
 
 	@Override
 	public String toString() {
@@ -59,6 +65,14 @@ public class RaiseTicket extends ActionForm
 				+ ", byuser=" + byuser + ", toadmin=" + toadmin + ", status=" + status + ", dateraised=" + dateraised
 				+ "]";
 	}
+
+
+	/*
+	 * public String getComands() { return comands; }
+	 * 
+	 * 
+	 * public void setComands(String comands) { this.comands = comands; }
+	 */
 
 	public int getTicketid() {
 		return ticketid;
@@ -69,7 +83,22 @@ public class RaiseTicket extends ActionForm
 	}
 
 	public String getSubject() {
-		return subject;
+		 
+		StringBuilder titleCase = new StringBuilder(subject.length());
+	        boolean nextTitleCase = true;
+
+	        for (char c : subject.toLowerCase().toCharArray()) {
+	            if (!Character.isLetterOrDigit(c)) {
+	                nextTitleCase = true;
+	            } else if (nextTitleCase) {
+	                c = Character.toTitleCase(c);
+	                nextTitleCase = false;
+	            }
+	            titleCase.append(c);
+	        }
+
+	       return titleCase.toString();
+		//return titlecase.subject;
 	}
 
 	public void setSubject(String subject) {

@@ -22,6 +22,10 @@ public class Userdata extends ActionForm {
 	@Column
 	private String usertype;
 	public Userdata() {}
+	@Override
+	public String toString() {
+		return "Userdata [username=" + username + ", password=" + password + ", usertype=" + usertype + "]";
+	}
 	public Userdata(String username, String password, String usertype) {
 		super();
 		this.username = username;

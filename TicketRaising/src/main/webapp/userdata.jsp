@@ -6,10 +6,13 @@
 <head>
 <meta charset="ISO-8859-1">
 <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
 
 
@@ -81,15 +84,15 @@
 	}
 </script>
 </head>
-<body style="background-color:pink;">
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" >SALESFORCE</a>
-    </div>
-    </div>
-    </nav>
-    
+<body style="background-color: pink;">
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand">SALESFORCE</a>
+			</div>
+		</div>
+	</nav>
+
 	<div class="container" align="center">
 		<header class="text-danger"> LOGIN PAGE</header>
 		<fieldset>
@@ -100,17 +103,19 @@
 
 						<td class="text-success">USER NAME :</td>
 
-						<td><input type="text" class="btn btn-info" id="user" name="username"></td>
+						<td><input type="text" class="btn btn-info" id="user"
+							name="username"></td>
 						<td><span style="color: green" id="senderror">*</span></td>
 
 					</tr>
 
 					<tr>
 
-						<td class="text-success">PASSWORD : </td>
+						<td class="text-success">PASSWORD :</td>
 
-						<td><input type="password" class="btn btn-info" id="pass" name="password"></td>
-						<td><span style="color: red"   id="usererror" >*</span></td>
+						<td><input type="password" class="btn btn-info" id="pass"
+							name="password"></td>
+						<td><span style="color: red" id="usererror">*</span></td>
 
 					</tr>
 

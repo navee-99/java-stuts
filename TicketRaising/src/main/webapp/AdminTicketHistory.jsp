@@ -27,7 +27,38 @@
 		
 	
 	<h1 style="color:blue" align="center">Ticket history</h1>  
-	<table class="table table-hover">
+	<table class="table">
+    <thead>
+      <tr>
+        <th>Ticket ID</th>
+        <th>Subject</th>
+        <th>Description</th>
+         <th>By</th>
+        <th>To</th>
+        <th>Status</th>
+        <th>Comands</th>
+        <th>DateRaised</th>
+      </tr>
+    </thead>
+     <tbody>
+     <c:forEach items="${Adminhistory}" var="x">
+      <tr>
+        <td> ${x.ticketid}</td>
+        <td> ${x.subject}</td>
+         <td> ${x.description}</td>
+          <td> ${x.byuser}</td>
+         <td> ${x.toadmin}</td>
+          <td> ${x.status}</td>
+          <td>${x.comands }</td>
+           <td> ${x.dateraised}</td>
+          
+      </tr>
+     
+     
+      </c:forEach>
+      </tbody>
+    </table>
+	<%-- <table class="table table-hover">
 
 		<tbody class="center">
 		
@@ -68,7 +99,7 @@
 
 		</tbody>
 
-	</table>
+	</table> --%>
 	</form>
 	</body>
 	</html>

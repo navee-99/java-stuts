@@ -33,7 +33,7 @@ public class DataAction extends DispatchAction{
 		request.setAttribute("people", list);
 		return mapping.findForward("success");
 	}
-
+}
 
 	/*
 	 * public ActionForward store(ActionMapping mapping, ActionForm form,
@@ -55,31 +55,25 @@ public class DataAction extends DispatchAction{
 	 * mapping.findForward("error"); } }
 	 */
 
-	public ActionForward update(ActionMapping mapping, ActionForm form, HttpServletRequest request,
-			HttpServletResponse response) throws Exception {
-
-		try {
-			RaiseTicketForm person=(RaiseTicketForm) form;
-			RaiseTicket p=new RaiseTicket(person.getTicketid(),person.getSubject(),person.getDescription(),person.getByuser(),person.getToadmin(),person.getStatus(),person.getDateraised());
-			PortalDAO.update(p);
-
-			List<RaiseTicket> list=PortalDAO.getValues();
-			request.setAttribute("people", list);
-			person.setByuser(null);	       
-			person.setDateraised(null);
-			person.setSubject(null);
-			person.setDescription(null);
-			person.setStatus(null);
-			person.getTicketid();
-			person.getToadmin();
-
-			return mapping.findForward("success");
-		}
-		catch(Exception e) {
-			return mapping.findForward("error");
-		}
-
-	}
-
-
-}
+	/*
+	 * public ActionForward update(ActionMapping mapping, ActionForm form,
+	 * HttpServletRequest request, HttpServletResponse response) throws Exception {
+	 * 
+	 * try { RaiseTicketForm person=(RaiseTicketForm) form; RaiseTicket p=new
+	 * RaiseTicket(person.getTicketid(),person.getSubject(),person.getDescription(),
+	 * person.getByuser(),person.getToadmin(),person.getStatus(),person.
+	 * getDateraised()); PortalDAO.update(p);
+	 * 
+	 * List<RaiseTicket> list=PortalDAO.getValues(); request.setAttribute("people",
+	 * list); person.setByuser(null); person.setDateraised(null);
+	 * person.setSubject(null); person.setDescription(null); person.setStatus(null);
+	 * person.getTicketid(); person.getToadmin();
+	 * 
+	 * return mapping.findForward("success"); } catch(Exception e) { return
+	 * mapping.findForward("error"); }
+	 * 
+	 * }
+	 * 
+	 * 
+	 * }
+	 */

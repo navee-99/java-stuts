@@ -34,13 +34,13 @@ System.out.println(username);
 		return ticket;
 	}
 	public static List<RaiseTicket> getHistory(String username){
-		Query q=em.createQuery("SELECT p FROM RaiseTicket p WHERE p.byuser='"+username+"'");
+		Query q=em.createQuery("SELECT p FROM RaiseTicket p WHERE p.status='closed' and p.byuser='"+username+"'");
 		List<RaiseTicket> history=q.getResultList();
 		return history;
 		
 	}
 	public static List<RaiseTicket> getAdminHistory(String username){
-		Query q=em.createQuery("SELECT p FROM RaiseTicket p WHERE p.toadmin='"+username+"'");
+		Query q=em.createQuery("SELECT p FROM RaiseTicket p WHERE p.status='closed' and  p.toadmin='"+username+"'");
 		List<RaiseTicket> history=q.getResultList();
 		return history;
 		

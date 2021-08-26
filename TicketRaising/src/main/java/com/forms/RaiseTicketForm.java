@@ -23,7 +23,25 @@ public class RaiseTicketForm extends ActionForm
 	private String toadmin;
 	private String status;
 	private java.sql.Date dateraised;
+	//private String comands;
 	
+	public RaiseTicketForm(int ticketid, String subject, String description, String byuser, String toadmin,
+			String status, Date dateraised) {
+		super();
+		this.ticketid = ticketid;
+		this.subject = subject;
+		this.description = description;
+		this.byuser = byuser;
+		this.toadmin = toadmin;
+		this.status = status;
+		this.dateraised = dateraised;
+		//this.comands = comands;
+	}
+
+	/*
+	 * public String getComands() { return comands; } public void setComands(String
+	 * comands) { this.comands = comands; }
+	 */
 	public ActionErrors validate(ActionMapping mapping, HttpServletRequest request) {
 	    ActionErrors errors = new ActionErrors();
 	    if (subject == null || subject.length() < 10) {
@@ -42,7 +60,20 @@ public class RaiseTicketForm extends ActionForm
 		this.ticketid = ticketid;
 	}
 	public String getSubject() {
-		return subject;
+		StringBuilder titleCase = new StringBuilder(subject.length());
+        boolean nextTitleCase = true;
+
+        for (char c : subject.toLowerCase().toCharArray()) {
+            if (!Character.isLetterOrDigit(c)) {
+                nextTitleCase = true;
+            } else if (nextTitleCase) {
+                c = Character.toTitleCase(c);
+                nextTitleCase = false;
+            }
+            titleCase.append(c);
+        }
+
+       return titleCase.toString();
 	}
 	public void setSubject(String subject) {
 		this.subject = subject;
@@ -77,17 +108,6 @@ public class RaiseTicketForm extends ActionForm
 	public void setDateraised(java.sql.Date dateraised) {
 		this.dateraised = dateraised;
 	}
-	public RaiseTicketForm(int ticketid, String subject, String description, String byuser, String toadmin,
-			String status, Date dateraised) {
-		super();
-		this.ticketid = ticketid;
-		this.subject = subject;
-		this.description = description;
-		this.byuser = byuser;
-		this.toadmin = toadmin;
-		this.status = status;
-		this.dateraised = dateraised;
-	}
 	@Override
 	public String toString() {
 		return "RaiseTicketForm [ticketid=" + ticketid + ", subject=" + subject + ", description=" + description
@@ -95,6 +115,7 @@ public class RaiseTicketForm extends ActionForm
 				+ "]";
 	}
 	
+
 	
 	
 
