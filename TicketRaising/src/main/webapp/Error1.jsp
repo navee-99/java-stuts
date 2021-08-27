@@ -19,7 +19,7 @@
     </div>
     </nav>
     <div class="container">
-    <h2 class="text-danger">INCORRECT PASSWORD ....TRY AGAIN</h2>
+    <h2 class="text-danger">SOMETHING WENT WORNG ....TRY AGAIN</h2>
      
     <a href="logout.do" class="btn btn-warning" role="button">RETRY </a>
    

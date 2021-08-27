@@ -21,7 +21,7 @@
  <div class="container">
     <h2 class="text-success">Hii! ${username}</h2>
     <h2 class="text-success"> YOUR TICKET RAISED SUCESSFULLY</h2>
-     
+      <a href="RaiseTicket.jsp" class="btn btn-warning" role="button">ADD TICKET</a>
 </div>
 </body>
 </html>

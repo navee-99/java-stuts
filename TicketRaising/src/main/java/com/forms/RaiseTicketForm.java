@@ -23,10 +23,10 @@ public class RaiseTicketForm extends ActionForm
 	private String toadmin;
 	private String status;
 	private java.sql.Date dateraised;
-	//private String comands;
+	private String comands;
 	
 	public RaiseTicketForm(int ticketid, String subject, String description, String byuser, String toadmin,
-			String status, Date dateraised) {
+			String status, Date dateraised, String comands) {
 		super();
 		this.ticketid = ticketid;
 		this.subject = subject;
@@ -35,13 +35,14 @@ public class RaiseTicketForm extends ActionForm
 		this.toadmin = toadmin;
 		this.status = status;
 		this.dateraised = dateraised;
-		//this.comands = comands;
+		this.comands = comands;
 	}
-
-	/*
-	 * public String getComands() { return comands; } public void setComands(String
-	 * comands) { this.comands = comands; }
-	 */
+	public String getComands() {
+		return comands;
+	}
+	public void setComands(String comands) {
+		this.comands = comands;
+	}
 	public ActionErrors validate(ActionMapping mapping, HttpServletRequest request) {
 	    ActionErrors errors = new ActionErrors();
 	    if (subject == null || subject.length() < 10) {
@@ -112,7 +113,7 @@ public class RaiseTicketForm extends ActionForm
 	public String toString() {
 		return "RaiseTicketForm [ticketid=" + ticketid + ", subject=" + subject + ", description=" + description
 				+ ", byuser=" + byuser + ", toadmin=" + toadmin + ", status=" + status + ", dateraised=" + dateraised
-				+ "]";
+				+ ", comands=" + comands + "]";
 	}
 	
 

@@ -38,15 +38,18 @@ public class RaiseTicket extends ActionForm
 	private String status;
 	@Column
 	private java.sql.Date dateraised;
-	/*
-	 * @Column private String comands;
-	 */
+	@Column
+	private String comands;
 	
 	public RaiseTicket() {}
 
 	
+	public int getTicketid() {
+		return ticketid;
+	}
+
 	public RaiseTicket(int ticketid, String subject, String description, String byuser, String toadmin, String status,
-			Date dateraised) {
+			Date dateraised, String comands) {
 		super();
 		this.ticketid = ticketid;
 		this.subject = subject;
@@ -55,7 +58,7 @@ public class RaiseTicket extends ActionForm
 		this.toadmin = toadmin;
 		this.status = status;
 		this.dateraised = dateraised;
-		//this.comands = comands;
+		this.comands = comands;
 	}
 
 
@@ -63,20 +66,19 @@ public class RaiseTicket extends ActionForm
 	public String toString() {
 		return "RaiseTicket [ticketid=" + ticketid + ", subject=" + subject + ", description=" + description
 				+ ", byuser=" + byuser + ", toadmin=" + toadmin + ", status=" + status + ", dateraised=" + dateraised
-				+ "]";
+				+ ", comands=" + comands + "]";
 	}
 
 
-	/*
-	 * public String getComands() { return comands; }
-	 * 
-	 * 
-	 * public void setComands(String comands) { this.comands = comands; }
-	 */
-
-	public int getTicketid() {
-		return ticketid;
+	public String getComands() {
+		return comands;
 	}
+
+
+	public void setComands(String comands) {
+		this.comands = comands;
+	}
+
 
 	public void setTicketid(int ticketid) {
 		this.ticketid = ticketid;

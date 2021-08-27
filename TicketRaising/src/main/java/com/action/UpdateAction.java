@@ -26,7 +26,8 @@ public class UpdateAction extends Action{
 		for(RaiseTicket x:tt) {
 			x.setStatus(raise.getStatus());
 			x.setDescription(raise.getDescription());
-			//x.setComands(raise.getComands());
+		x.setComands(raise.getComands());
+			//System.out.println(raise.getComands());
 request.getSession().setAttribute("status", tt);
 			if(PortalDAO.update(x)) {
 				

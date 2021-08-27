@@ -55,6 +55,7 @@
          <th>By</th>
         <th>To</th>
         <th>Status</th>
+        <th>Comands</th>
         <th>DateRaised</th>
       </tr>
     </thead>
@@ -62,12 +63,15 @@
      <c:forEach items="${history}" var="x">
       <tr>
         <td> ${x.ticketid}</td>
-        <td> ${x.subject}</td>
-         <td> ${x.description}</td>
-          <td> ${x.byuser}</td>
+           <td> ${x.byuser}</td>
+     <td> ${x.status}</td>
+       
+       
          <td> ${x.toadmin}</td>
-          <td> ${x.status}</td>
-          
+         
+              <td> ${x.subject}</td>
+                <td> ${x.description}</td>
+                <td>${x.comands }</td>
            <td> ${x.dateraised}</td>
           
       </tr>

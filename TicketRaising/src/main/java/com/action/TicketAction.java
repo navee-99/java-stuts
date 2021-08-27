@@ -43,7 +43,7 @@ public class TicketAction extends Action
 		te.setSubject(tf.getSubject());
 		te.setDescription(tf.getDescription());
 		te.setStatus("open");
-		//te.setComands("add commands");
+	te.setComands("add commands");
 		//if(request.getSession().isNew()) {}
 		//if(request.getAttribute("user") != null) {
 		//System.out.println("not null");
@@ -51,11 +51,12 @@ public class TicketAction extends Action
 		//LoginForm log= (LoginForm)form;
 	
 		
-		 Enumeration<String> keys=request.getSession().getAttributeNames(); while
-		  (keys.hasMoreElements()){ String key = (String)keys.nextElement();
-		  System.out.println(key + ": " +request.getSession().getValue(key) + "<br>");
-		  }
-		 
+		/*
+		 * Enumeration<String> keys=request.getSession().getAttributeNames(); while
+		 * (keys.hasMoreElements()){ String key = (String)keys.nextElement();
+		 * System.out.println(key + ": " +request.getSession().getValue(key) + "<br>");
+		 * }
+		 */
 		
 		//request.getSession().setAttribute("user", log.getUsername());
 		LoginForm tf1= (LoginForm) request.getSession().getValue("LoginForm");
