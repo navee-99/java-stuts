@@ -13,8 +13,16 @@ import com.entity.Userprofile;
 public class PortalDAO {
 	private static EntityManager em=JPARepository.getEntityManager();
 	public static List<Userdata> getUser(String username, String password){
-		Query q= em.createQuery("SELECT p.usertype FROM Userdata p WHERE p.username = '" +username+ "' and p.password= '"+password+"'");
+		Query q= em.createQuery("SELECT p.usertype FROM Userdata p WHERE p.username = '" +username+"'");
 System.out.println(username);
+/* + "' and p.password= '"+password */
+	List<Userdata> list= q.getResultList();
+	return list;
+	}
+	public static List<Userdata> getUserpass(String username, String password){
+		Query q= em.createQuery("SELECT p.usertype FROM Userdata p WHERE p.password = '" +password+"'");
+System.out.println(password);
+/* + "' and p.password= '"+password */
 	List<Userdata> list= q.getResultList();
 	return list;
 	}

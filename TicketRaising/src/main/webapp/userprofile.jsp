@@ -15,13 +15,21 @@
 	pageEncoding="ISO-8859-1"%>
 	  <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
     <%@taglib prefix="html" uri="http://struts.apache.org/tags-html"%>
-<!DOCTYPE html>
-<html>
+
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 </head>
 <body>
+<%
+  /*  HttpSession sess = request.getSession(true); */
+    if (sess.getAttribute("username")==null)
+    {
+    %>
+        <jsp:forward page="/login.do?msg=You will have to login first in order to access other pages"></jsp:forward>
+    <%
+    }
+%>
 <div class="container">
 	<p align="right" style="margin-top:100px">
 	<!-- <header class="btn btn-warning"> BIO-DATA</header>

@@ -41,6 +41,15 @@
 <title>Insert title here</title>
 </head>
 <body>
+<%
+  /*  HttpSession sess = request.getSession(true); */
+    if (sess.getAttribute("username")==null)
+    {
+    %>
+        <jsp:forward page="/login.do?msg=You will have to login first in order to access other pages"></jsp:forward>
+    <%
+    }
+%>
 
 	<form action="/status" method="post"> 
 		<p align="right" style="margin-top:100px">

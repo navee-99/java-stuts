@@ -9,16 +9,16 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body  style="background-color:pink">
-<%
+<%-- <%
    HttpSession sess = request.getSession(true); 
     if (sess.getAttribute("username")==null)
     {
     %>
-        <jsp:forward page="/login.do?msg=You will have to login first in order to access other pages"></jsp:forward>
+        <jsp:forward page="/userdata.jsp?msg=You will have to login first in order to access other pages"></jsp:forward>
     <%
     }
 %>
-
+ --%>
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -27,11 +27,10 @@
     </div>
     </nav>
     <div class="container">
-    <h2 class="text-danger">SOMETHING WENT WORNG ....TRY AGAIN</h2>
+    <h2 class="text-danger">INCORRECT PASSWORD ....TRY AGAIN</h2>
      
     <a href="logout.do" class="btn btn-warning" role="button">RETRY </a>
    
       
        </div>
 </body>
-</html>

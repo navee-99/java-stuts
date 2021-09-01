@@ -7,6 +7,15 @@
 <title>Insert title here</title>
 </head>
 <body>
+<%
+    HttpSession ses = request.getSession(true);
+    if (ses.getAttribute("username")==null)
+    {
+    %>
+        <jsp:forward page="/login.do?msg=You will have to login first in order to access other pages"></jsp:forward>
+    <%
+    }
+%>
 <html:form action="/ticket" method="post">
 	<table class="table table-hover">
 

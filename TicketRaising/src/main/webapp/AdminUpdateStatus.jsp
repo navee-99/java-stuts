@@ -33,6 +33,15 @@
 <body>
 </head>
 <body>
+<%
+   /* HttpSession sess = request.getSession(true); */
+    if (sess.getAttribute("username")==null)
+    {
+    %>
+        <jsp:forward page="/login.do?msg=You will have to login first in order to access other pages"></jsp:forward>
+    <%
+    }
+%>
 	<div class="container">
 <form action="simpleform.do" method="post">
 		<p align="right" style="margin-top: 100px"></p>

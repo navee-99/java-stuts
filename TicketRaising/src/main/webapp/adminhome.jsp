@@ -13,7 +13,21 @@
 </head>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
     <%@taglib prefix="html" uri="http://struts.apache.org/tags-html"%>
+  <%--  <%@taglib uri="/struts-tags" prefix="s"%>  --%>
+   
+ 
 <body  style="background-color:pink">
+
+<%
+   HttpSession sess = request.getSession(true);
+    if (sess.getAttribute("username")==null)
+    {
+    %>
+        <jsp:forward page="/login.do?msg=You will have to login first in order to access other pages"></jsp:forward>
+    <%
+    }
+    
+%>
 
 <nav class="navbar navbar-inverse navbar-fixed-top height-100px">
 	<div class="container-fluid">
@@ -31,13 +45,13 @@
 		<ul class="nav navbar-nav navbar-right">
 	<li><a>${name}</a>
 	
-			<li><a ><span
+			<li><a href="adminprofile.do" ><span
 					class="glyphicon glyphicon-eye"></span> ${username}</a></li>
-			<li><a href="adminprofile.do"><span
-					class="glyphicon glyphicon-user"></span> Admin Profile</a></li>
+			<!-- <li><a href="adminprofile.do"><span
+					class="glyphicon glyphicon-user"></span> Admin Profile</a></li> -->
 			<li><a href="logout.do"><span
 					class="glyphicon glyphicon-log-out"></span> Logout</a></li>
-				<li> <</a>
+				
 		</ul>
 	</div>
 

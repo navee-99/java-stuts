@@ -17,6 +17,15 @@
 <title>Insert title here</title>
 </head>
 <body>
+<%
+   HttpSession ses = request.getSession(true);
+    if (ses.getAttribute("username")==null)
+    {
+    %>
+        <jsp:forward page="/login.do?msg=You will have to login first in order to access other pages"></jsp:forward>
+    <%
+    }
+%>
 <p align="right" style="margin-top:50px">
  <div class="container">
     <h2 class="text-success">Hii! ${username}</h2>

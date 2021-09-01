@@ -14,7 +14,8 @@
 <action input="/userdata.jsp" name="LoginForm" path="/login"  scope="session" type="com.action.UserdataAction">
 			<forward name="user" path="/userhome.jsp"  redirect="true"></forward>
 			<forward name="admin" path="/adminhome.jsp"  redirect="true"></forward>
-			<forward name="error" path="/error.jsp"></forward>
+			<forward name="username" path="/username.jsp"></forward>
+			<forward name="password" path="/password.jsp"></forward>
 				
 		</action>
 		<action name="LoginForm" path="/profile" scope="session" type="com.action.ProfileAction">
