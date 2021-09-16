@@ -1,5 +1,6 @@
 package com.thirdware.guptabookstore.pojo;
 
+import java.sql.Date;
 import java.util.List;
 import java.util.Set;
 
@@ -15,26 +16,27 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import lombok.Data;
+import lombok.Data; 
 
-@Table
+@Table(name = "boughtlist")
 @javax.persistence.Entity
 @Data
 public class Boughtlist {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer sno;
+	@Column(insertable=false,updatable=false)
 	private Integer userid;
-
+	@Column(insertable=false,updatable=false)
 	private Integer bookid;
-	@ManyToOne(cascade=CascadeType.ALL) 
-	
-	 
-	@JoinColumn(name="bookid")
-	private Set<Booklist> booklist;
+	private  Date boughtdate;
 	@ManyToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="userid")
-	private Set<Registerform> registerform;
+	@JoinColumn(name="userid",nullable = false)
+	
+	private Registerform registerform;
+	@ManyToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="bookid",nullable = false)
+	private Booklist booklist;
 	public Integer getSno() {
 		return sno;
 	}
@@ -57,6 +59,14 @@ public class Boughtlist {
 
 	public void setBookid(Integer bookid) {
 		this.bookid = bookid;
+	}
+
+	public Date getBoughtdate() {
+		return boughtdate;
+	}
+
+	public void setBoughtdate(Date boughtdate) {
+		this.boughtdate = boughtdate;
 	}
 
 	

@@ -1,8 +1,10 @@
 package com.thirdware.guptabookstore.pojo;
 
+import java.sql.Date;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,26 +18,30 @@ import javax.persistence.Table;
 import lombok.Data;
 
 @Entity
-@Table
+@Table(name = "feedback")
 @Data
 public class Feedback {
 
 @Id
 @GeneratedValue(strategy = GenerationType.IDENTITY)
 private Integer sno;
+@Column(insertable=false,updatable=false)
 	private Integer userid;
+@Column(insertable=false,updatable=false)
 	private Integer bookid;
 	private  String rating   ;
 	private String command;
 	
-     @ManyToOne(cascade=CascadeType.ALL)
+    private  Date feedbackdate ;
+    @ManyToOne(cascade=CascadeType.ALL)
 	
 	
-	@JoinColumn(name="bookid")
-	private Set<Booklist> booklist;
-	@ManyToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="userid")
-	private Set<Registerform> registerform;
+   	@JoinColumn(name="bookid",nullable = false)
+   	private Booklist booklist;
+   	@ManyToOne(cascade=CascadeType.ALL)
+   	@JoinColumn(name="userid",nullable = false)
+   	private Registerform registerform;
+
 	
 	public Integer getSno() {
 		return sno;
@@ -66,6 +72,12 @@ private Integer sno;
 	}
 	public void setCommand(String command) {
 		this.command = command;
+	}
+	public Date getFeedbackdate() {
+		return feedbackdate;
+	}
+	public void setFeedbackdate(Date feedbackdate) {
+		this.feedbackdate = feedbackdate;
 	}
 
 }

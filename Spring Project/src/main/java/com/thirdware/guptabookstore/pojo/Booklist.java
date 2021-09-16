@@ -19,33 +19,36 @@ import org.springframework.format.annotation.DateTimeFormat;
 import lombok.Data;
 @javax.persistence.Entity
 
-@Table
+@Table(name = "booklist")
 @Data
 public class Booklist {
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
 
 
 
 	 private Integer bookid;
-	 private String bookname;
+	 private String bookname; 
 	 private String authorname;
 	 private String catagore;
 	 private Integer availableStack;
 	
 	 private Integer price;
-	 
+	 private Date addeddate;
 	 private Integer yearpublish;
-	 private DateTimeFormat addedDate;
-	 
+	
+	
 	 @OneToMany(cascade=CascadeType.ALL)
-		@JoinColumn(name="bookid")
+	 @JoinColumn(name = "bookid")
 		private Set<Boughtlist> boughtlist;
 		@OneToMany(cascade=CascadeType.ALL)
-		@JoinColumn(name="bookid")
-		private Set<Cartlist>cartlist;
+		 @JoinColumn(name = "bookid")
+				private Set<Cartlist>cartlist;
 		@OneToMany(cascade=CascadeType.ALL)
-		@JoinColumn(name="bookid")
+		 @JoinColumn(name = "bookid")
+		
 		private Set<Feedback>feedback;
+	
 	public Integer getBookid() {
 		return bookid;
 	}
@@ -98,17 +101,20 @@ public class Booklist {
 		return yearpublish;
 	}
 
-	public void setYearpublish(Integer yearpublish) {
+	public void setYearpublish(Integer yearpublish) { 
 		this.yearpublish = yearpublish;
 	}
 
-	public DateTimeFormat getAddedDate() {
-		return addedDate;
+	public Date getAddeddate() {
+		return addeddate;
 	}
 
-	public void setAddedDate(DateTimeFormat addedDate) {
-		this.addedDate = addedDate;
+	public void setAddeddate(Date addeddate) {
+		this.addeddate = addeddate;
 	}
+
+	
+
 
 	
 }
