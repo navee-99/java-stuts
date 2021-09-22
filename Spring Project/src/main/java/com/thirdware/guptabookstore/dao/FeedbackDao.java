@@ -8,5 +8,8 @@ import com.thirdware.guptabookstore.pojo.Feedback;
 @Repository
 	public interface FeedbackDao extends JpaRepository<Feedback, Integer>{
 		
+	
+	
+	
 	}
 

@@ -6,6 +6,7 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -14,6 +15,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import lombok.Data;
 
@@ -25,22 +27,24 @@ public class Feedback {
 @Id
 @GeneratedValue(strategy = GenerationType.IDENTITY)
 private Integer sno;
-@Column(insertable=false,updatable=false)
+@Column(nullable = false,updatable=false)
 	private Integer userid;
-@Column(insertable=false,updatable=false)
+@Column(nullable = false,updatable=false)
 	private Integer bookid;
 	private  String rating   ;
 	private String command;
 	
     private  Date feedbackdate ;
-    @ManyToOne(cascade=CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY, optional = true)
 	
 	
    	@JoinColumn(name="bookid",nullable = false)
+    @Transient
    	private Booklist booklist;
-   	@ManyToOne(cascade=CascadeType.ALL)
+   	@ManyToOne(fetch = FetchType.LAZY, optional = true)
    	@JoinColumn(name="userid",nullable = false)
-   	private Registerform registerform;
+   	@Transient
+   	private UserData userdata;
 
 	
 	public Integer getSno() {

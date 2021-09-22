@@ -7,6 +7,7 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,6 +16,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import lombok.Data; 
 
@@ -25,18 +27,36 @@ public class Boughtlist {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer sno;
-	@Column(insertable=false,updatable=false)
+	@Column(updatable=false,nullable = false)
 	private Integer userid;
-	@Column(insertable=false,updatable=false)
+	@Column(updatable=false,nullable = false)
 	private Integer bookid;
 	private  Date boughtdate;
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.LAZY, optional = true)
+
 	@JoinColumn(name="userid",nullable = false)
-	
-	private Registerform registerform;
-	@ManyToOne(cascade=CascadeType.ALL)
+	@Transient
+	private UserData userdata;
+	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+
 	@JoinColumn(name="bookid",nullable = false)
+	@Transient
 	private Booklist booklist;
+	@Override
+	public String toString() {
+		return "Boughtlist [sno=" + sno + ", userid=" + userid + ", bookid=" + bookid + ", boughtdate=" + boughtdate
+				+ ", userdata=" + userdata + ", booklist=" + booklist + "]";
+	}
+public Booklist booklist() {
+	return booklist;
+	
+}
+
+/*
+ * public UserData userdata() { return userdata;
+ * 
+ * }
+ */
 	public Integer getSno() {
 		return sno;
 	}
