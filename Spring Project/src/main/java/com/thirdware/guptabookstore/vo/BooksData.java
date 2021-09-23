@@ -33,19 +33,58 @@ public class BooksData {
 		this.bookid = bookid;
 	}
 	public String getBookname() {
-		return bookname;
+		StringBuilder titleCase = new StringBuilder(bookname.length());
+        boolean nextTitleCase = true;
+
+        for (char c : bookname.toLowerCase().toCharArray()) {
+            if (!Character.isLetterOrDigit(c)) {
+                nextTitleCase = true;
+            } else if (nextTitleCase) {
+                c = Character.toTitleCase(c);
+                nextTitleCase = false;
+            }
+            titleCase.append(c);
+        }
+
+       return titleCase.toString();
 	}
 	public void setBookname(String bookname) {
 		this.bookname = bookname;
 	}
 	public String getAuthorname() {
-		return authorname;
+		StringBuilder titleCase = new StringBuilder(authorname.length());
+        boolean nextTitleCase = true;
+
+        for (char c : authorname.toLowerCase().toCharArray()) {
+            if (!Character.isLetterOrDigit(c)) {
+                nextTitleCase = true;
+            } else if (nextTitleCase) {
+                c = Character.toTitleCase(c);
+                nextTitleCase = false;
+            }
+            titleCase.append(c);
+        }
+
+       return titleCase.toString();
 	}
 	public void setAuthorname(String authorname) {
 		this.authorname = authorname;
 	}
 	public String getCatagore() {
-		return catagore;
+		StringBuilder titleCase = new StringBuilder(catagore.length());
+        boolean nextTitleCase = true;
+
+        for (char c : catagore.toLowerCase().toCharArray()) {
+            if (!Character.isLetterOrDigit(c)) {
+                nextTitleCase = true;
+            } else if (nextTitleCase) {
+                c = Character.toTitleCase(c);
+                nextTitleCase = false;
+            }
+            titleCase.append(c);
+        }
+
+       return titleCase.toString();
 	}
 	public void setCatagore(String catagore) {
 		this.catagore = catagore;

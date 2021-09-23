@@ -1,8 +1,10 @@
 package com.thirdware.guptabookstore.pojo;
 
-import java.sql.Date;
+
+import java.util.Date;
 import java.util.Set;
 
+import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,6 +17,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
 import lombok.Data;
@@ -33,7 +37,9 @@ private Integer sno;
 	private Integer bookid;
 	private  String rating   ;
 	private String command;
-	
+	@Basic(optional = false)
+	@Column(name = "feedbackdate", insertable = false, updatable = false)
+	@Temporal(TemporalType.TIMESTAMP)
     private  Date feedbackdate ;
     @ManyToOne(fetch = FetchType.LAZY, optional = true)
 	
@@ -66,13 +72,41 @@ private Integer sno;
 		this.bookid = bookid;
 	}
 	public String getRating() {
-		return rating;
+		StringBuilder titleCase = new StringBuilder(rating.length());
+        boolean nextTitleCase = true;
+
+        for (char c : rating.toLowerCase().toCharArray()) {
+            if (!Character.isLetterOrDigit(c)) {
+                nextTitleCase = true;
+            } else if (nextTitleCase) {
+                c = Character.toTitleCase(c);
+                nextTitleCase = false;
+            }
+            titleCase.append(c);
+        }
+
+       return titleCase.toString();
+		
 	}
 	public void setRating(String rating) {
 		this.rating = rating;
 	}
 	public String getCommand() {
-		return command;
+		StringBuilder titleCase = new StringBuilder(command.length());
+        boolean nextTitleCase = true;
+
+        for (char c : command.toLowerCase().toCharArray()) {
+            if (!Character.isLetterOrDigit(c)) {
+                nextTitleCase = true;
+            } else if (nextTitleCase) {
+                c = Character.toTitleCase(c);
+                nextTitleCase = false;
+            }
+            titleCase.append(c);
+        }
+
+       return titleCase.toString();
+		
 	}
 	public void setCommand(String command) {
 		this.command = command;

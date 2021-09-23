@@ -10,6 +10,7 @@ import com.thirdware.guptabookstore.dao.BookListDao;
 import com.thirdware.guptabookstore.dao.BoughtlistDao;
 import com.thirdware.guptabookstore.dao.CartlistDao;
 import com.thirdware.guptabookstore.dao.LoginDao;
+import com.thirdware.guptabookstore.dao.StoreDao;
 import com.thirdware.guptabookstore.pojo.Booklist;
 import com.thirdware.guptabookstore.pojo.Boughtlist;
 import com.thirdware.guptabookstore.pojo.Cartlist;
@@ -26,8 +27,9 @@ public class BoughtService {
 
 	@Autowired
 	LoginDao logindao;
+	@Autowired
+	StoreDao storeDao;
 
-	
 	@Autowired
 	BookListDao booklistdao;
 	@Autowired
@@ -35,45 +37,48 @@ public class BoughtService {
 	public String buybook(BoughtData buybooks) {
 		// TODO Auto-generated method stub
 
-		
+
 		/*
 		 * BoughtService boughtservice = new BoughtService(); BoughtService bou = new
 		 * BoughtService(); boughtservice.editbooklist(buybooks);
 		 * bou.getlogindata(buybooks);
 		 */
 		Booklist books=booklistdao.bookid(buybooks.getBookid());
-		
-int 	stack =	books.getAvailableStack();
+		UserData users=storeDao.userid(buybooks.getUserid());
+		int 	stack =	books.getAvailableStack();
 		if (stack >=1) {
-			
-		
-		  System.out.println("      buybooks "+buybooks.toString());
-		   Boughtlist bought = new
-		  Boughtlist();
-		 
-		bought.setUserid(buybooks.getUserid());
-		
-		bought.setBoughtdate(buybooks.getBoughtdate());
-		
-		bought.setBookid(buybooks.getBookid());
-		
-		boughtlistdao.save(bought);
-           
-		stack--;
-		books.setAvailableStack(stack);
-		booklistdao.save(books);
-		
-		Cartlist cart=cartlistDao.bookid(buybooks.getBookid());
-		
-		if(cart.getBookid().equals(buybooks.getBookid())) {
-			cartlistDao.delete(cart);
-			
-		}
-		return "success";
 
-	}else {
-		return "stack not available";
-	}
+
+			System.out.println("      buybooks "+buybooks.toString());
+			Boughtlist bought = new Boughtlist();
+
+
+			bought.setUserid(buybooks.getUserid());
+
+
+
+			bought.setBookid(buybooks.getBookid());
+
+			bought.setQuantity(buybooks.getQuantity());
+
+			boughtlistdao.save(bought);
+
+			stack=	stack - buybooks.getQuantity();
+			books.setAvailableStack(stack);
+			booklistdao.save(books);
+
+			Cartlist cart=cartlistDao.bookid(buybooks.getBookid());
+if(cart != null) {
+			if(cart.getBookid().equals(buybooks.getBookid())) {
+				cartlistDao.delete(cart);
+			}return "Bought books "+"\n"+"userid : "+buybooks.getUserid()+"\n"+"name : "+users.getName()+"\n"+"bookname : "+books.getBookname();
+
+			}
+			return "Bought books "+"\n"+"userid : "+buybooks.getUserid()+"\n"+"name : "+users.getName()+"\n"+"bookname : "+books.getBookname();
+
+		}else {
+			return "books not available";
+		}
 	}
 	public String boughtbooks(List<Boughtlist> buy) {
 		// TODO Auto-generated method stub
@@ -83,10 +88,18 @@ int 	stack =	books.getAvailableStack();
 
 	public List<Boughtlist> boughtlist() {
 		// TODO Auto-generated method stub
-		
+
 		List<Boughtlist> buylist=boughtlistdao.findAll();
 		return buylist;
-		
+
+	}
+	public List<Boughtlist> userbooks(Boughtlist buy) {
+		// TODO Auto-generated method stub
+		List<Boughtlist> buylist=boughtlistdao.userid(buy.getUserid());
+		return buylist;
+
+
+
 	}
 
 }

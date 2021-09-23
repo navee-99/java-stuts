@@ -1,8 +1,11 @@
 package com.thirdware.guptabookstore.pojo;
 
-import java.sql.Date;
+
+import java.util.Date;
 import java.util.Set;
 
+
+import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,6 +17,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
 import lombok.Data;
@@ -29,6 +34,10 @@ private Integer sno;
 	private Integer userid;
 @Column(nullable = false,updatable=false)
 	private Integer bookid;
+private Integer quantity;
+@Basic(optional = false)
+@Column(name = "cartdate", insertable = false, updatable = false)
+@Temporal(TemporalType.TIMESTAMP)
 	private Date cartdate ;
 @ManyToOne(fetch = FetchType.LAZY, optional = true)
 	
@@ -71,6 +80,14 @@ private Integer sno;
 
 	public void setCartdate(Date cartdate) {
 		this.cartdate = cartdate;
+	}
+
+	public Integer getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(Integer quantity) {
+		this.quantity = quantity;
 	}
 
 	

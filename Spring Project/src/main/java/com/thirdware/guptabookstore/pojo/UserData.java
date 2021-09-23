@@ -1,9 +1,11 @@
 package com.thirdware.guptabookstore.pojo;
 
 
-import java.sql.Date;
+
+import java.util.Date;
 import java.util.Set;
 
+import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
@@ -15,6 +17,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.SequenceGenerators;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -28,8 +32,9 @@ import lombok.Data;
 public class UserData {
 	@Id
 
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-
+	/*
+	 * @GeneratedValue(strategy = GenerationType.IDENTITY)
+	 */
 
 	private Integer userid;
 	private String name;
@@ -38,6 +43,9 @@ public class UserData {
 	private Integer mobile;
 	private String  usertype;
 	private Integer age;
+	@Basic(optional = false)
+	@Column(name = "registerdate", insertable = false, updatable = false)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date registerdate;
 	
 @OneToMany(cascade=CascadeType.ALL)
@@ -78,7 +86,20 @@ public String toString() {
 		this.userid = userid;
 	}
 	public String getName() {
-		return name;
+		StringBuilder titleCase = new StringBuilder(name.length());
+        boolean nextTitleCase = true;
+
+        for (char c : name.toLowerCase().toCharArray()) {
+            if (!Character.isLetterOrDigit(c)) {
+                nextTitleCase = true;
+            } else if (nextTitleCase) {
+                c = Character.toTitleCase(c);
+                nextTitleCase = false;
+            }
+            titleCase.append(c);
+        }
+
+       return titleCase.toString();
 	}
 	public void setName(String name) {
 		this.name = name;
@@ -97,7 +118,20 @@ public String toString() {
 	}
 	
 	public String getUsertype() {
-		return usertype;
+		StringBuilder titleCase = new StringBuilder(usertype.length());
+        boolean nextTitleCase = true;
+
+        for (char c : usertype.toLowerCase().toCharArray()) {
+            if (!Character.isLetterOrDigit(c)) {
+                nextTitleCase = true;
+            } else if (nextTitleCase) {
+                c = Character.toTitleCase(c);
+                nextTitleCase = false;
+            }
+            titleCase.append(c);
+        }
+
+       return titleCase.toString();
 	}
 	public void setUsertype(String usertype) {
 		this.usertype = usertype;

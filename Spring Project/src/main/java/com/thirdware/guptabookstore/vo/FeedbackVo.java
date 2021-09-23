@@ -24,13 +24,39 @@ public class FeedbackVo {
 		this.bookid = bookid;
 	}
 	public String getRating() {
-		return rating;
+		StringBuilder titleCase = new StringBuilder(rating.length());
+        boolean nextTitleCase = true;
+
+        for (char c : rating.toLowerCase().toCharArray()) {
+            if (!Character.isLetterOrDigit(c)) {
+                nextTitleCase = true;
+            } else if (nextTitleCase) {
+                c = Character.toTitleCase(c);
+                nextTitleCase = false;
+            }
+            titleCase.append(c);
+        }
+
+       return titleCase.toString();
 	}
 	public void setRating(String rating) {
 		this.rating = rating;
 	}
 	public String getCommand() {
-		return command;
+		StringBuilder titleCase = new StringBuilder(command.length());
+        boolean nextTitleCase = true;
+
+        for (char c : command.toLowerCase().toCharArray()) {
+            if (!Character.isLetterOrDigit(c)) {
+                nextTitleCase = true;
+            } else if (nextTitleCase) {
+                c = Character.toTitleCase(c);
+                nextTitleCase = false;
+            }
+            titleCase.append(c);
+        }
+
+       return titleCase.toString();
 	}
 	public void setCommand(String command) {
 		this.command = command;

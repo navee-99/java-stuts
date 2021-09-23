@@ -29,13 +29,14 @@ import com.thirdware.guptabookstore.vo.AddToCartVo;
 import com.thirdware.guptabookstore.vo.BooksData;
 import com.thirdware.guptabookstore.vo.BoughtData;
 import com.thirdware.guptabookstore.vo.FeedbackVo;
+import com.thirdware.guptabookstore.vo.RegisterVo;
 import com.thirdware.guptabookstore.vo.Userdata;
 
 @RestController
 public class StoreController {
 
 	@Autowired
-	
+
 	StoreService storeService;
 	/*
 	 * @RequestMapping(value ="/login" ,method = RequestMethod.POST) public String
@@ -46,26 +47,26 @@ public class StoreController {
 	 */
 	@Autowired
 	LoginService loginservice;
-	
-	@RequestMapping(value ="/logindata" ,method = RequestMethod.POST)
+
+	@RequestMapping(value ="/login" ,method = RequestMethod.POST)
 	public String getlogindata(@RequestBody Userdata userdata ) {
 		return loginservice.getlogindata(userdata);
 	}
-	
-	
-	
+
+
+
 	@Autowired
 	EditBookService editbookservice;
 	@Scope("session")
 	@RequestMapping(value ="/editbooks" ,method = RequestMethod.POST)
 	public String editbooklist(@RequestBody BooksData booksdata ){
-	
-		
+
+
 		return editbookservice.editbooklist(booksdata);
-		
+
 	}
-	
-	
+
+
 	@RequestMapping("/registerlist")
 	public List<UserData>  getStudentList(){
 		return storeService.getStudentList();
@@ -74,20 +75,20 @@ public class StoreController {
 	public List<Booklist>  addedbooklist(){
 		return storeService.addedbooklist();
 	}
-	
-	
-	
+
+
+
 	@RequestMapping(value="/register",method=RequestMethod.POST)
-	public String register(@RequestBody List<UserData> registeration) {
+	public String register(@RequestBody RegisterVo registeration) {
 		return storeService.register(registeration); 
 	}
-	
-	
+
+
 	@RequestMapping(value="/addbook",method=RequestMethod.POST)
-	public String addbook(@RequestBody List<Booklist> addedbooklist) {
+	public String addbook(@RequestBody BooksData addedbooklist) {
 		return storeService.addedbook(addedbooklist);
 	}
-	
+
 
 	@Autowired
 	BoughtService boughtservice;
@@ -95,7 +96,9 @@ public class StoreController {
 	public List<Boughtlist>  boughtlist(){ 
 		return boughtservice.boughtlist();
 	}
-	
+
+
+
 	@RequestMapping("/buybook")
 	public String buybook(@RequestBody BoughtData buybooks) {
 		System.out.println(buybooks.toString());
@@ -103,7 +106,7 @@ public class StoreController {
 		 * boughtservice.editbooklist(buybooks); boughtservice.getlogindata(buybooks);
 		 */
 		return boughtservice.buybook(buybooks);
-		
+
 	}
 
 	/*
@@ -116,10 +119,14 @@ public class StoreController {
 	public String boughtbooks(@RequestBody List<Boughtlist> buy) {
 		return boughtservice.boughtbooks(buy);
 	}
-	
+	@RequestMapping(value="/userbooks",method=RequestMethod.POST)
+	public List<Boughtlist> userbooks(@RequestBody Boughtlist buy) {
+		return boughtservice.userbooks(buy);
+	}
+
 	@Autowired
 	AddToCartService addToCartService;
-	
+
 	@RequestMapping("/cartlist")
 	public List<Cartlist>  cartlist(){
 		return addToCartService.cartlist();
@@ -127,8 +134,19 @@ public class StoreController {
 	@RequestMapping(value="/addtocart",method=RequestMethod.POST)
 	public String addToCart(@RequestBody AddToCartVo addcart){
 		return addToCartService.addToCart(addcart);
-		
+
 	}
+	@RequestMapping(value="/RemoveFromCart",method=RequestMethod.POST)
+	public String removeFromCart(@RequestBody AddToCartVo addcart){
+		return addToCartService.removeFromCart(addcart);
+
+	}
+	@RequestMapping(value="/UserCartList",method=RequestMethod.POST)
+	public List<Cartlist> UserCartList(@RequestBody AddToCartVo addcart){
+		return addToCartService.UserCartList(addcart);
+
+	}
+
 	@Autowired
 	FeedbackService feedbackService;
 	@RequestMapping("/feedbacks")
@@ -138,31 +156,36 @@ public class StoreController {
 	@RequestMapping(value="/addfeedback",method=RequestMethod.POST)
 	public String addfeedback(@RequestBody FeedbackVo feedbackVo){
 		return feedbackService.addfeedback(feedbackVo);
-		
+
+	}
+	@RequestMapping(value="/userfeedback",method=RequestMethod.POST)
+	public List<Feedback> userfeedback(@RequestBody FeedbackVo feedbackVo){
+		return feedbackService.userfeedback(feedbackVo);
+
 	}
 	@RequestMapping(value="/searchbybookname",method=RequestMethod.POST)
 	public List<Booklist> sortbybookname(@RequestBody BooksData booksData){
 		return storeService.sortbybookname(booksData);
-		
+
 	}
 	@RequestMapping(value="/searchbyauthor",method=RequestMethod.POST)
 	public List<Booklist> sortbyauthor(@RequestBody BooksData booksData){
 		return storeService.sortbyauthor(booksData);
-		
+
 	}
 	@RequestMapping(value="/searchbyprice",method=RequestMethod.POST)
 	public List<Booklist> sortbyprice(@RequestBody BooksData booksData){
 		return storeService.sortbyprice(booksData);
-		
+
 	}
 	@RequestMapping(value="/searchbyyear",method=RequestMethod.POST)
 	public List<Booklist> sortbyyear(@RequestBody BooksData booksData){
 		return storeService.sortbyyear(booksData);
-		
+
 	}
 	@RequestMapping(value="/searchbycategore",method=RequestMethod.POST)
 	public List<Booklist> sortbycategore(@RequestBody BooksData booksData){
 		return storeService.sortbycategore(booksData);
-		
+
 	}
 }

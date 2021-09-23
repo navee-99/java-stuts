@@ -11,6 +11,10 @@ import com.thirdware.guptabookstore.vo.BoughtData;
 @Repository
 	public interface BoughtlistDao extends JpaRepository<Boughtlist, Integer>{
 
+	List<Boughtlist> userid(Integer userid);
+
+	Boughtlist bookid(Integer bookid);
+
 		/* void saveAll(List<BoughtData> buybooks); */
 
 		/* void save(BoughtData buybooks); */

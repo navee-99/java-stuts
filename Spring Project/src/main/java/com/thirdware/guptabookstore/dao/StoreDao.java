@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import com.thirdware.guptabookstore.pojo.UserData;
+import com.thirdware.guptabookstore.vo.RegisterVo;
 
 @Repository
 
@@ -15,6 +16,10 @@ import com.thirdware.guptabookstore.pojo.UserData;
 public interface StoreDao extends JpaRepository<UserData, Integer> {
 
 	UserData userid(int userid);
+
+	UserData mobile(Integer mobile);
+
+	
 	
 	
 }

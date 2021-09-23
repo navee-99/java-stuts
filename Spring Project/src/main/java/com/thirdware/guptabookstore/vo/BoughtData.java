@@ -8,7 +8,7 @@ public class BoughtData {
 	private Integer userid;
 	private Integer bookid;
 	private Date boughtdate;
-	
+	private Integer quantity;
 	public BoughtData() {
 		
 	}
@@ -33,21 +33,32 @@ public class BoughtData {
 	public void setBoughtdate(Date boughtdate) {
 		this.boughtdate = boughtdate;
 	}
-	public BoughtData(Integer userid, Integer bookid, Date boughtdate) {
+	
+	
+	public BoughtData(Long sno, Integer userid, Integer bookid, Date boughtdate, Integer quantity) {
 		super();
+		this.sno = sno;
 		this.userid = userid;
 		this.bookid = bookid;
 		this.boughtdate = boughtdate;
+		this.quantity = quantity;
 	}
 	@Override
 	public String toString() {
-		return "BoughtData [userid=" + userid + ", bookid=" + bookid + ", boughtdate=" + boughtdate + "]";
+		return "BoughtData [sno=" + sno + ", userid=" + userid + ", bookid=" + bookid + ", boughtdate=" + boughtdate
+				+ ", quantity=" + quantity + "]";
 	}
 	public Long getSno() {
 		return sno;
 	}
 	public void setSno(Long sno) {
 		this.sno = sno;
+	}
+	public Integer getQuantity() {
+		return quantity;
+	}
+	public void setQuantity(Integer quantity) {
+		this.quantity = quantity;
 	}
 	
 }

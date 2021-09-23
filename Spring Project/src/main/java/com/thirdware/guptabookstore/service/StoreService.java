@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.thirdware.guptabookstore.pojo.Booklist;
 import com.thirdware.guptabookstore.pojo.UserData;
 import com.thirdware.guptabookstore.vo.BooksData;
+import com.thirdware.guptabookstore.vo.RegisterVo;
 import com.thirdware.guptabookstore.vo.Userdata;
 import com.thirdware.guptabookstore.dao.BookListDao;
 import com.thirdware.guptabookstore.dao.BoughtlistDao;
@@ -39,13 +40,28 @@ public class StoreService {
 	 
 	
 	
-	public String register(List<UserData> registeration) {
+	public String register(RegisterVo registeration) {
 		// TODO Auto-generated method stub
 		
-		//UserData data=storeDao.userid(registeration.)
+		UserData data=storeDao.userid(registeration.getUserid());
+		UserData number=storeDao.mobile(registeration.getMobile());
+		if(data==null){
+			if(number==null) {
+				UserData add=new UserData();
+				add.setUserid(registeration.getUserid());
+				add.setName(registeration.getName());
+				add.setPassword(registeration.getPassword());
+				add.setUsertype(registeration.getUsertype());
+				add.setRegisterdate(registeration.getRegisterdate());
+				add.setAge(registeration.getAge());
+				add.setMobile(registeration.getMobile());
+		storeDao.save(add);
 		
-		storeDao.saveAll(registeration);
 		return "Success"; 
+			}return registeration.getMobile()+"   this mobile number is allready registered";
+		}else {
+			return registeration.getUserid()+ "  this ID is allready register";
+		}
 	}
  
 	public List<Booklist> addedbooklist() { 
@@ -53,9 +69,19 @@ public class StoreService {
 		List<Booklist> booklist=booklistdao.findAll();
 		return booklist;
 	}
-	public String addedbook(List<Booklist> addedbooklist) {
+	public String addedbook(BooksData addedbooklist) {
 		// TODO Auto-generated method stub
-		booklistdao.saveAll(addedbooklist);
+		
+		Booklist add=new Booklist();
+		
+		add.setBookid(addedbooklist.getBookid());
+		add.setBookname(addedbooklist.getBookname());
+		add.setAuthorname(addedbooklist.getAuthorname());
+		add.setAvailableStack(addedbooklist.getAvailableStack());
+		add.setCatagore(addedbooklist.getCatagore());
+		add.setPrice(addedbooklist.getPrice());
+		add.setYearpublish(addedbooklist.getYearpublish());
+		booklistdao.save(add);
 		return "Success";
 	}
 
